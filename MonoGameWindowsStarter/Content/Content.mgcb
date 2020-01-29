@@ -13,7 +13,7 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin 2-25604_black-vector-soccer-ball-png-clipart.png
+#begin Table_tennis_ball.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -23,5 +23,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:2-25604_black-vector-soccer-ball-png-clipart.png
+/build:Table_tennis_ball.png;ball.png
 
