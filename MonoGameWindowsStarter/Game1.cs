@@ -18,9 +18,10 @@ namespace MonoGameWindowsStarter
         Vector2 ballVelocity;
         Texture2D paddle;
         Rectangle paddleRect;
-
-        keybo
         int paddleSpeed = 0;
+        KeyboardState oldKeyboardState;
+        KeyboardState newKeyboardState;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -84,12 +85,25 @@ namespace MonoGameWindowsStarter
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            var keyboardState = Keyboard.GetState();
+            newKeyboardState = Keyboard.GetState();
+
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            if (keyboardState.IsKeyDown(Keys.Escape))
+            if (newKeyboardState.IsKeyDown(Keys.Escape))
                 Exit();
+
+            if(newKeyboardState.IsKeyDown(Keys.Up) 
+                && !oldKeyboardState.IsKeyDown(Keys.Up))
+            {
+                paddleSpeed -= 1;
+            }
+
+            if(newKeyboardState.IsKeyDown(Keys.Down)
+                && !oldKeyboardState.IsKeyDown(Keys.Down))
+            {
+                paddleSpeed += 1;
+            }
 
             paddleRect.Y += paddleSpeed;
             if (paddleRect.Y < 0)
@@ -133,6 +147,7 @@ namespace MonoGameWindowsStarter
                 ballPosition.X += 2 * delta;
             }
 
+            oldKeyboardState = newKeyboardState;
             base.Update(gameTime);
         }
 
