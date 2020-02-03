@@ -24,7 +24,19 @@ namespace MonoGameWindowsStarter
 
         public bool CollidesWith(BoundingRectangle other)
         {
-            return !(this.X > other.X + other.Width || this.X + this.Width < other.X || this.Y > other.Y + other.Height || this.Y + this.Height < other.Y);
+            return !(this.X > other.X + other.Width 
+                || this.X + this.Width < other.X 
+                || this.Y > other.Y + other.Height 
+                || this.Y + this.Height < other.Y);
+        }
+
+        public static implicit operator Rectangle(BoundingRectangle br)
+        {
+            return new Rectangle(
+                (int)br.X, 
+                (int)br.Y, 
+                (int)br.Width, 
+                (int)br.Height);
         }
     }
 }
