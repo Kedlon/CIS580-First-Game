@@ -10,8 +10,11 @@ namespace MonoGameWindowsStarter
     public struct BoundingRectangle
     {
         public float X;
+
         public float Y;
+
         public float Width;
+
         public float Height;
 
         public BoundingRectangle(float x, float y, float width, float height)
@@ -22,21 +25,16 @@ namespace MonoGameWindowsStarter
             this.Height = height;
         }
 
-        public bool CollidesWith(BoundingRectangle other)
-        {
-            return !(this.X > other.X + other.Width 
-                || this.X + this.Width < other.X 
-                || this.Y > other.Y + other.Height 
-                || this.Y + this.Height < other.Y);
-        }
-
         public static implicit operator Rectangle(BoundingRectangle br)
         {
             return new Rectangle(
-                (int)br.X, 
-                (int)br.Y, 
-                (int)br.Width, 
+                (int)br.X,
+                (int)br.Y,
+                (int)br.Width,
                 (int)br.Height);
         }
+
     }
+
+    
 }

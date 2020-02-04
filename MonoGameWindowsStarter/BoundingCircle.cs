@@ -10,15 +10,18 @@ namespace MonoGameWindowsStarter
     public struct BoundingCircle
     {
         public float X;
+
         public float Y;
+
         public float Radius;
 
         public Vector2 Center {
             get => new Vector2(X, Y);
-            set {
-                X = value.X;
-                Y = value.Y;
+            set { 
+                X = value.X; 
+                Y = value.Y; 
             }
         }
+
     }
 }

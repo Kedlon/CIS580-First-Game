@@ -16,14 +16,12 @@ namespace MonoGameWindowsStarter
         Texture2D ball;
         Vector2 ballPosition = Vector2.Zero;
         Vector2 ballVelocity;
-        //Texture2D paddle;
-       // Rectangle paddleRect;
-        //int paddleSpeed = 0;
-        KeyboardState oldKeyboardState;
-        KeyboardState newKeyboardState;
-        BoundingRectangle paddleBounds;
 
         Paddle paddle;
+
+        KeyboardState oldKeyboardState;
+        KeyboardState newKeyboardState;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -50,11 +48,6 @@ namespace MonoGameWindowsStarter
             );
             ballVelocity.Normalize();
 
-           // paddleRect.X = 0;
-            //paddleRect.Y = 0;
-            //paddleRect.Width = 50;
-            //paddleRect.Height = 250;
-
             base.Initialize();
         }
 
@@ -69,7 +62,6 @@ namespace MonoGameWindowsStarter
 
             // TODO: use this.Content to load your game content here
             ball = Content.Load<Texture2D>("ball");
-            //paddle = Content.Load<Texture2D>("pixel");
             paddle.LoadContent(Content);
         }
 
@@ -97,17 +89,7 @@ namespace MonoGameWindowsStarter
             if (newKeyboardState.IsKeyDown(Keys.Escape))
                 Exit();
 
-            
-
-            //paddleRect.Y += paddleSpeed;
-            //if (paddleRect.Y < 0)
-            //{
-            //    paddleRect.Y = 0;
-            //}
-            //if (paddleRect.Y > GraphicsDevice.Viewport.Height - paddleRect.Height)
-            //{
-            //    paddleRect.Y = GraphicsDevice.Viewport.Height - paddleRect.Height;
-            //}
+            paddle.Update(gameTime);
 
             // TODO: Add your update logic here
             ballPosition += (float)gameTime.ElapsedGameTime.TotalMilliseconds * ballVelocity;
@@ -162,7 +144,7 @@ namespace MonoGameWindowsStarter
                     100, 
                     100), 
                     Color.White);
-            spriteBatch.Draw();
+            paddle.Draw(spriteBatch);
             spriteBatch.End();
 
 
