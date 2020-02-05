@@ -23,5 +23,14 @@ namespace MonoGameWindowsStarter
             }
         }
 
+        public static implicit operator Rectangle(BoundingCircle cr)
+        {
+            return new Rectangle(
+                (int)(cr.X - cr.Radius),
+                (int)(cr.Y - cr.Radius),
+                (int)(cr.Radius * 2),
+                (int)(cr.Radius * 2));
+        }
+
     }
 }
